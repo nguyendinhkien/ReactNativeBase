@@ -3,12 +3,10 @@ export interface IEndpoint {
   url: string;
 }
 
-const loginEndpoint: IEndpoint = {
-  url: '',
-};
-
-export const ENDPOINT = {
-  LOGIN: loginEndpoint,
+export const ENDPOINT: {[name: string]: IEndpoint} = {
+  LOGIN: {
+    url: 'login',
+  },
 };
 
 export class Endpoint {

@@ -4,7 +4,7 @@ import {useFocusEffect} from '@react-navigation/native';
 import {HomeProps} from '../navigation/ScreenProps';
 import {useTheme} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
-import {callAPI} from '../../commons/RestClient';
+import Config from 'react-native-config';
 import {ENDPOINT} from '../../commons/Endpoint';
 
 export function HomeScreen({navigation}: HomeProps) {
@@ -19,7 +19,7 @@ export function HomeScreen({navigation}: HomeProps) {
         justifyContent: 'center',
         backgroundColor: theme.colors.error,
       }}>
-      <Text>{t('welcome')}</Text>
+      <Text>{Config.API_URL + ENDPOINT.LOGIN.url}</Text>
       <Button
         title="Go to Details"
         onPress={() =>
