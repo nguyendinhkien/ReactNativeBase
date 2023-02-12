@@ -21,7 +21,7 @@ const Stack = createNativeStackNavigator<MainStackParamList>();
 function App() {
   const scheme = useColorScheme();
   const [isThemeDark, setIsThemeDark] = React.useState(scheme === 'dark');
-  const [isLogined, setIsLogined] = React.useState(false);
+  const [isLogined, setIsLogined] = React.useState(true);
 
   let theme = isThemeDark ? DarkThemes : LightThemes;
 

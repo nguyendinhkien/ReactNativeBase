@@ -1,12 +1,13 @@
 import axios from 'axios';
+import Config from 'react-native-config';
 import {Platform} from 'react-native/types';
 import {IBaseModel} from '../data/models/BaseModel';
 import {IEndpoint} from './Endpoint';
 
 async function getInstance() {
   return axios.create({
-    //   baseURL: Config.ServiceUrl,
-    //   timeout: Config.RequestTimeOut,
+      baseURL: Config.API_URL,
+      timeout: 30000,
     headers: {
       'Content-Type': 'application/json',
       // 'Authorization': `Bearer ${globalStore.token}`
