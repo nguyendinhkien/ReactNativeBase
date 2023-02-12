@@ -9,16 +9,19 @@ import {
   PreferencesContext,
 } from './lib/commons/Themes';
 import {Provider as PaperProvider, useTheme} from 'react-native-paper';
-import {RootStackParamList} from './lib/ui/navigation/ScreenProps';
+import {MainStackParamList} from './lib/ui/navigation/ScreenProps';
 import {HomeScreen} from './lib/ui/screens/HomeScreen';
-import {DetailsScreen} from './lib/ui/screens/LoginScreen';
 import './lib/translations/i18n';
+import {observer} from 'mobx-react';
+import AuthNavigation from './lib/ui/navigation/AuthNavigation';
+import MainNavigation from './lib/ui/navigation/MainNavigation';
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Stack = createNativeStackNavigator<MainStackParamList>();
 
-export default function App() {
+function App() {
   const scheme = useColorScheme();
   const [isThemeDark, setIsThemeDark] = React.useState(scheme === 'dark');
+  const [isLogined, setIsLogined] = React.useState(false);
 
   let theme = isThemeDark ? DarkThemes : LightThemes;
 
@@ -43,33 +46,11 @@ export default function App() {
     <PreferencesContext.Provider value={preferences}>
       <PaperProvider theme={theme}>
         <NavigationContainer theme={theme}>
-          <Stack.Navigator>
-            <Stack.Screen
-              name="Home"
-              component={HomeScreen}
-              options={{title: `${scheme}`}}></Stack.Screen>
-            <Stack.Screen
-              name="Details"
-              component={DetailsScreen}
-              options={({route}) => ({
-                title: `${theme.colors.error}`,
-                headerRight: () => (
-                  <Button
-                    onPress={() =>
-                      Alert.alert(
-                        Messages.getMessages(
-                          Messages.MESSAGES.ERROR_NETWORKING,
-                          1.2,
-                        ),
-                      )
-                    }
-                    title="Info"
-                  />
-                ),
-              })}></Stack.Screen>
-          </Stack.Navigator>
+          {isLogined ? <MainNavigation /> : <AuthNavigation />}
         </NavigationContainer>
       </PaperProvider>
     </PreferencesContext.Provider>
   );
 }
+
+export default observer(App);

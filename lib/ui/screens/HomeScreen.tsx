@@ -19,7 +19,7 @@ export function HomeScreen({navigation}: HomeProps) {
         justifyContent: 'center',
         backgroundColor: theme.colors.error,
       }}>
-      <Text>{Config.API_URL + ENDPOINT.LOGIN.url}</Text>
+      <Text>{Config.APP_NAME}</Text>
       <Button
         title="Go to Details"
         onPress={() =>
