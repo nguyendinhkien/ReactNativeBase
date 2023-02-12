@@ -10,8 +10,9 @@ import {
 } from './lib/commons/Themes';
 import {Provider as PaperProvider, useTheme} from 'react-native-paper';
 import {RootStackParamList} from './lib/ui/navigation/ScreenProps';
-import { HomeScreen } from './lib/ui/screens/HomeScreen';
-import { DetailsScreen } from './lib/ui/screens/LoginScreen';
+import {HomeScreen} from './lib/ui/screens/HomeScreen';
+import {DetailsScreen} from './lib/ui/screens/LoginScreen';
+import './lib/translations/i18n';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

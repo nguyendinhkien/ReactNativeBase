@@ -3,21 +3,11 @@ import React from 'react';
 import {useFocusEffect} from '@react-navigation/native';
 import {HomeProps} from '../navigation/ScreenProps';
 import {useTheme} from 'react-native-paper';
+import {useTranslation} from 'react-i18next';
 
 export function HomeScreen({navigation}: HomeProps) {
   const theme = useTheme();
-  useFocusEffect(
-    React.useCallback(() => {
-      // Do something when the screen is focused
-      console.log('Home is focused');
-
-      return () => {
-        // Do something when the screen is unfocused
-        // Useful for cleanup functions
-        console.log('Home is unfocused');
-      };
-    }, []),
-  );
+  const {t} = useTranslation();
   return (
     <View
       style={{
@@ -26,7 +16,7 @@ export function HomeScreen({navigation}: HomeProps) {
         justifyContent: 'center',
         backgroundColor: theme.colors.error,
       }}>
-      <Text>Home Screen</Text>
+      <Text>{t('welcome')}</Text>
       <Button
         title="Go to Details"
         onPress={() =>
