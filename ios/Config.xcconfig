@@ -1,0 +1,8 @@
+//
+//  Config.xcconfig
+//  AwesomeProject
+//
+//  Created by Nguyen Dinh Kien on 13/02/2023.
+//
+
+#include? "tmp.xcconfig"
